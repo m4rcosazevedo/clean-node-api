@@ -1,2 +1,6 @@
-node_module
+node_modules
 dist
+coverage
+data
+!src/data
+.vscode
