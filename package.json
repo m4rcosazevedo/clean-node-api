@@ -5,6 +5,7 @@
   "author": "Marcos Azevedo <marcos.azevedo@izap.com.br>",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcrypt": "^3.0.0",
     "@types/jest": "^26.0.13",
     "@types/node": "^14.10.1",
     "@typescript-eslint/eslint-plugin": "^4.1.1",
@@ -29,5 +30,8 @@
     "test:integration": "yarn test -- --watch -c jest-integration-config.js",
     "test:staged": "yarn test -- --findRelatedTests",
     "test:ci": "yarn test -- --coverage"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0"
   }
 }
