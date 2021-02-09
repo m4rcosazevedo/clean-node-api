@@ -2,14 +2,11 @@
   "compilerOptions": {
     "outDir": "dist",
     "module": "commonjs",
-    "target": "es2019",
+    "target": "es2018",
     "esModuleInterop": true,
     "sourceMap": true,
     "rootDir": "src",
-    "baseUrl": "src",
-    "paths": {
-      "@/*": ["*"]
-    }
+    "baseUrl": "src"
   },
   "include": [
     "src"
