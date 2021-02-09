@@ -3,9 +3,17 @@ import { badRequest } from '../../helpers/http-helper'
 import { MissingParamError } from '../../erros'
 
 export class LoginController implements Controller {
-  async handle (_httpRequest: HttpRequest): Promise<HttpResponse> {
-    return new Promise<HttpResponse>(resolve => resolve(
-      badRequest(new MissingParamError('email'))
-    ))
+  async handle (httpRequest: HttpRequest): Promise<HttpResponse> {
+    if (!httpRequest.body.email) {
+      return new Promise<HttpResponse>(resolve => resolve(
+        badRequest(new MissingParamError('email'))
+      ))
+    }
+
+    if (!httpRequest.body.password) {
+      return new Promise<HttpResponse>(resolve => resolve(
+        badRequest(new MissingParamError('password'))
+      ))
+    }
   }
 }
