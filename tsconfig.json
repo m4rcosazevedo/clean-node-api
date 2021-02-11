@@ -4,9 +4,7 @@
     "module": "commonjs",
     "target": "es2018",
     "esModuleInterop": true,
-    "sourceMap": true,
-    "rootDir": "src",
-    "baseUrl": "src"
+    "sourceMap": true
   },
   "include": [
     "src"
