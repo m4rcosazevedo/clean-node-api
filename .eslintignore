@@ -1,7 +1,5 @@
 node_modules
 dist
 coverage
-data
 doc
-.vscode
 *.md
