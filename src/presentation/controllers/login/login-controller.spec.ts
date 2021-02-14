@@ -2,7 +2,7 @@ import { Authentication, AuthenticationModel, HttpRequest } from './login-contro
 import { LoginController } from './login-controller'
 import { badRequest, ok, serverError, unauthorized } from '../../helpers/http/http-helper'
 import { MissingParamError } from '../../erros'
-import { Validation } from '../../protocols/validation'
+import { Validation } from '../../protocols'
 
 const makeFakeRequest = (): HttpRequest => ({
   body: {
