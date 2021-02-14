@@ -33,7 +33,7 @@
   },
   "scripts": {
     "dev": "sucrase-node src/main/server.ts",
-    "build": "rimraf dist && tsc && rimraf dist/**/*.map",
+    "build": "rimraf dist && tsc",
     "start": "node dist/main/server.js",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand",
     "test:verbose": "jest --passWithNoTests --runInBand",
