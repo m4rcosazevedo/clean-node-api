@@ -1,9 +1,7 @@
 import { forbidden, ok, serverError } from '../helpers/http/http-helper'
 import { AccessDeniedError } from '../erros'
 import { AuthMiddleware } from './auth-middleware'
-import { LoadAccountByToken } from '../../domain/usecases/load-account-by-token'
-import { AccountModel } from '../../domain/models/account-model'
-import { HttpRequest } from '../protocols'
+import { AccountModel, HttpRequest, LoadAccountByToken } from './auth-middleware-protocols'
 
 const makeFakeAccount = (): AccountModel => ({
   id: 'valid_id',
@@ -28,14 +26,14 @@ const makeLoadAccountByTokenStub = (): LoadAccountByToken => {
   return new LoadAccountByTokenStub()
 }
 
-interface SutTaypes {
+interface SutTypes {
   sut: AuthMiddleware
   loadAccountByTokenStub: LoadAccountByToken
 }
 
-const makeSut = (): SutTaypes => {
+const makeSut = (role?: string): SutTypes => {
   const loadAccountByTokenStub = makeLoadAccountByTokenStub()
-  const sut = new AuthMiddleware(loadAccountByTokenStub)
+  const sut = new AuthMiddleware(loadAccountByTokenStub, role)
   return {
     sut,
     loadAccountByTokenStub
@@ -50,11 +48,12 @@ describe('Auth Middleware', () => {
   })
 
   test('Should call LoadAccountByToken with correct accessToken', async () => {
-    const { sut, loadAccountByTokenStub } = makeSut()
+    const role = 'any_role'
+    const { sut, loadAccountByTokenStub } = makeSut(role)
     const loadSpy = jest.spyOn(loadAccountByTokenStub, 'load')
     await sut.handle(makeFakeRequest())
 
-    expect(loadSpy).toHaveBeenCalledWith('any_token')
+    expect(loadSpy).toHaveBeenCalledWith('any_token', role)
   })
 
   test('Should return 403 if LoadAccountByToken returns null', async () => {
