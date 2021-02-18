@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { Controller, HttpRequest } from '../../../presentation/protocols'
+import { Controller, HttpRequest } from '@/presentation/protocols'
 import { makeLogControllerDecorator } from '../../factories/decorators/log-controller-decorator-factory'
 
 export const adaptRoute = (controller: Controller): any => {
